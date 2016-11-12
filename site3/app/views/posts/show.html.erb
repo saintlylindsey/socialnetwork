@@ -1,0 +1,31 @@
+<h1><%= @post.title %></h1>
+<p>
+	<%= @post.body %>
+</p>
+
+<h4> =====categories==== </h4>
+
+<% @post.cats.each do |g| %>
+	<%= g.name %>
+<% end %>
+
+<h4> =====comments==== </h4>
+
+<% @comments.each_with_index do |p, i| %>
+	<%= i + 1 %>
+	<%= p.body %>
+	<%= p.created_at %>
+	<p></p>
+<% end %>
+
+<%= form_for @comment, :url => post_comments_path(@post) do |f| %>
+
+	<div class="field">
+		<%= f.text_area :body %>
+	</div>
+
+	<div>
+		<%= f.submit %>
+	</div>
+
+<% end %>

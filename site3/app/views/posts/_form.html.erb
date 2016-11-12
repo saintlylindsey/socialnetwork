@@ -1,0 +1,19 @@
+<%= form_for(@post) do |f| %>
+
+	<div class="field">
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</div>
+
+	<div class="field">
+		<%= f.label :body %>
+		<%= f.text_area :body %>
+	</div>
+
+	<div>
+		<%= f.submit %>
+	</div>
+
+	<%= f.collection_check_boxes(:cat_ids, Cat.all, :id, :name) %>
+
+<% end %>

@@ -1,0 +1,8 @@
+<h2>Recently commented</h2>
+
+<% @latest_posts.each do |p| %>
+	<%=p.id %>
+	<%=p.title %>
+	<%=p.created_at %>
+	<p></p>	
+<% end %>
