@@ -37,8 +37,14 @@ class PostsController < ApplicationController
 
 	def create
 		@post=Post.new(post_params)
-		@post.save
-		redirect_to posts_path
+		@post.user=current_user
+		if @post.save
+			flash[:notice]="Post was successfully created"
+			redirect_to posts_path
+		else 
+			flash[:notice]="Post was not saved. Please retry."
+			redirect_to new_post_path
+		end
 	end
 
 	def edit 
@@ -51,13 +57,10 @@ class PostsController < ApplicationController
 		redirect_to(posts_path)
 	end
 
-	def dashboard
-	end 
-
 	protected 
 
 	def post_params
-		params.require(:post).permit(:title, :body, :comment_id, :cat_ids => [])
+		params.require(:post).permit(:title, :body, :comment_id, :cat_ids, :user_id => [])
 	end 
 
 end

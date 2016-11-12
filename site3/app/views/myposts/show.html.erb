@@ -1,0 +1,25 @@
+
+<h4> My posts </h4>
+
+<% @posts.each do |p| %>
+	<%=p.id %>
+	<%=p.title %>
+	<%=p.created_at %>
+	<%=p.body %>
+	</p>
+	<p></p>	
+<% end %>
+
+
+<h4> My comments </h4>
+
+<% @comments.each do |p| %>
+	<i><%= p.body %></i>
+	<%= p.created_at %>
+	<%= link_to p.post.title, post_path(p.post) %>
+	</p>
+	<p></p>	
+<% end %>
+
+
+
