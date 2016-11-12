@@ -16,7 +16,9 @@
 	<%= p.body %>
 	<%= p.created_at %>
 	<p></p>
+	<%=link_to_if((current_user==p.user), "Delete", post_comment_path(@post, p), :method=>:delete) {""}%>
 <% end %>
+
 
 <%= form_for @comment, :url => post_comments_path(@post) do |f| %>
 

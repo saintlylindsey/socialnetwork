@@ -1,0 +1,22 @@
+<%= form_for(@user) do |f| %>
+
+	<div class="field">
+		Your Name:
+		<%= f.text_area:name %>
+	</div>
+
+	<div class="field">
+		About You:
+		<%= f.text_area :aboutyou %>
+	</div>
+
+	<div class="field">
+		Your Birthday:
+		<%= f.text_area :birthday %>
+	</div>
+
+	<div>
+		<%= f.submit %>
+	</div>
+
+<% end %>

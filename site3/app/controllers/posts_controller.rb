@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 			redirect_to posts_path
 		else 
 			flash[:notice]="Post was not saved. Please retry."
-			redirect_to new_post_path
+			render :action => :new
 		end
 	end
 
@@ -53,7 +53,18 @@ class PostsController < ApplicationController
 
 	def update
 		@post=Post.find(params[:id])
-		@post.update(post_params)
+		if @post.update(post_params)
+			flash[:notice]="Post was successfully updated"
+			redirect_to posts_path
+		else 
+			flash[:notice]="Post was not saved. Please retry."
+			render :action => :new	
+		end
+	end
+
+	def destroy
+		@post=Post.find(params[:id])
+		@post.destroy
 		redirect_to(posts_path)
 	end
 
